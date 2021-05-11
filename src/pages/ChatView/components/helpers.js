@@ -33,7 +33,7 @@ export const imgurUpload = (formData, callback) => {
 
 export const getGif = (searchText, callback) => {
   return fetch(
-    'http://api.giphy.com/v1/gifs/search?' +
+    'https://api.giphy.com/v1/gifs/search?' +
       new URLSearchParams({
         api_key: 'giqPI3ShZDEzc4Y6Icbe8QHIJvwr6P3I',
         q: searchText,
