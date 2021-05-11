@@ -1,0 +1,1 @@
+export const SOCKET_URL = "https://pager-hiring.herokuapp.com/?username=";

@@ -1,0 +1,8 @@
+.login-container{
+  &__box{
+    padding: 40px;
+    &--input {
+      margin-bottom: 40px;
+    }
+  }
+}
