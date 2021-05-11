@@ -6,7 +6,7 @@ import { ChatList } from './components/ChatList';
 import { TypingValues } from './components/TypingValues';
 import { ChatInput } from './components/ChatInput';
 
-export function ChatView() {
+export function ChatView({location}) {
   
   const [socket] = useContext(SocketContext);
   
@@ -17,7 +17,7 @@ export function ChatView() {
     if (!socket) history.push('/');
     else socket.on('is-typing', (typers) => setTypersList(typers));
   }, [socket, history]);
-
+  
   return (
     <Container maxW="container.sm">
       <div className="chat-container center-v">
@@ -25,7 +25,7 @@ export function ChatView() {
           <div className="chat-container__box">
             <ChatList></ChatList>
             <ChatInput></ChatInput>
-            <TypingValues typersList={typersList}></TypingValues>
+            <TypingValues typersList={typersList} username={location.username}></TypingValues>
           </div>
         </Box>
       </div>

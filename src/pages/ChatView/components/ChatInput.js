@@ -56,6 +56,7 @@ export function ChatInput() {
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
         value={msg}
+        pr="7rem"
       />
       <InputRightElement width="7rem">
         <IconButton

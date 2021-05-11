@@ -11,7 +11,7 @@ beforeEach(() => {
   React.useState = jest.fn().mockReturnValue([{}, {}]);
   historyMock = { push: jest.fn(), location: {}, listen: jest.fn() };
 });
-
+window.HTMLElement.prototype.scrollIntoView = function() {};
 it("renders correctly", () => {
   const socket = {
     on:jest.fn()
@@ -20,7 +20,7 @@ it("renders correctly", () => {
   mount(
     <SocketContext.Provider value={[socket, jest.fn()]}>
        <Router history={historyMock}>
-        <ChatView/>
+        <ChatView location={{username:"test"}}/>
       </Router>
     </SocketContext.Provider>
   );
@@ -32,7 +32,7 @@ it("rendirects the user", () => {
   mount(
     <SocketContext.Provider value={[socket, jest.fn()]}>
        <Router history={historyMock}>
-        <ChatView/>
+        <ChatView location={{username:"test"}}/>
       </Router>
     </SocketContext.Provider>
   );

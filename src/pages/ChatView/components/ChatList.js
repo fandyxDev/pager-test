@@ -15,16 +15,11 @@ export function ChatList() {
     const localMessages = JSON.parse(localStorage.getItem('messagesList'));
     if (localMessages && localMessages.length > 0 && messageList.length === 0)
       setMessageList(localMessages);
-  }, [messageList]);
-
-  useEffect(() => {
-    if (Object.keys(messageList).length > 0)
-      listEnd.current?.scrollIntoView({ behavior: 'smooth' });
+    listEnd.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messageList]);
 
   useEffect(() => {
     if (socket) {
-      
       socket.on('message', (message) => {
         const newList = [...messageListRef.current, message];
         localStorage.setItem('messagesList', JSON.stringify(newList));
@@ -41,8 +36,8 @@ export function ChatList() {
       <iframe
         title={`giphy-${url}`}
         src={url}
-        width="240"
-        height="270"
+        width="160"
+        height="auto"
         frameBorder="0"
       ></iframe>
     );

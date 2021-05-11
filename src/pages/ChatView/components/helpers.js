@@ -25,10 +25,12 @@ export const imgurUpload = (formData, callback) => {
     body: formData,
   })
     .then((response) => response.json())
-    .then((res) => callback(res.data.link))
-    .catch((error) => {
-      console.error(error);
-    });
+    .then((res) => {
+      console.log(res)
+      if (res.status === 200) callback(res.data.link);
+      else alert('Please select a valid image', 'Error');
+    })
+    .catch(() => {});
 };
 
 export const getGif = (searchText, callback) => {

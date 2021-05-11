@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Box, Button, Container, Input, Text } from "@chakra-ui/react"
 import socketio from "socket.io-client";
 import { SOCKET_URL } from '../../config';
@@ -11,10 +11,17 @@ export function Login() {
   const [value, setValue] = useState("")
   const handleChange = (event) => setValue(event.target.value)
   const history = useHistory();
+  const valueRef = useRef();
+  valueRef.current=value;
+  
   useEffect(()=>{
     if(socket){
-    socket.on('user-connected', () => {
-      if (socket.connected) history.push("chat")
+    socket.on('user-connected', (username) => {
+      if (socket.connected)  
+        history.push({
+          pathname: '/chat',
+          username: valueRef.current
+        });
     });}
   }, [socket, history])
   const connectSocket = () => 
